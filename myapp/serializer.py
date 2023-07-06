@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Kumuthan_Role, Kumuthan_Users
+from .models import Admin_Roles, Admin_Users
 
-class ClientSerializer(serializers.ModelSerializer):
-    role_name = serializers.SerializerMethodField()
+class UsersSerializer(serializers.ModelSerializer): #To serialize Admin_User table
+    role_name = serializers.SerializerMethodField() #To get role_name from Roles table
     class Meta:
-        model = Kumuthan_Users
+        model = Admin_Users
         fields = ['id','first_name','last_name', 'email', 'phone_no', 'role_id', 'role_name']
     
     def get_role_name(self, obj):

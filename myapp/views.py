@@ -1,18 +1,18 @@
-from django.shortcuts import render,redirect
 from rest_framework import generics
-from .models import Kumuthan_Users, Kumuthan_Role
-from .serializer import ClientSerializer
+from .models import Admin_Users, Admin_Roles
+from .serializer import UsersSerializer
 from rest_framework.response import Response
 
-# Create your views here.
-    
-class ListUsers(generics.ListAPIView, generics.CreateAPIView):
-    queryset = Kumuthan_Users.objects.all()
-    serializer_class = ClientSerializer
 
-class DetailedUsers(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Kumuthan_Users.objects.all()
-    serializer_class = ClientSerializer
+#Kumuthan 05/07/2023    
+class ListUsers(generics.ListAPIView, generics.CreateAPIView): #To list all users and to create new user.
+    queryset = Admin_Users.objects.all()
+    serializer_class = UsersSerializer
+
+#Kumuthan 05/07/2023    
+class DetailedUsers(generics.RetrieveUpdateDestroyAPIView): #To retrieve, update and delete particular user.
+    queryset = Admin_Users.objects.all()
+    serializer_class = UsersSerializer
     
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
